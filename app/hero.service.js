@@ -1,4 +1,4 @@
-System.register(['./mock-heroes', 'angular2/core'], function(exports_1) {
+System.register(['./mock-heroes', 'angular2/core', './logger.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['./mock-heroes', 'angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var mock_heroes_1, core_1;
+    var mock_heroes_1, core_1, logger_service_1;
     var HeroService;
     return {
         setters:[
@@ -17,16 +17,22 @@ System.register(['./mock-heroes', 'angular2/core'], function(exports_1) {
             },
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (logger_service_1_1) {
+                logger_service_1 = logger_service_1_1;
             }],
         execute: function() {
             HeroService = (function () {
-                function HeroService() {
+                function HeroService(_loggerService) {
+                    this._loggerService = _loggerService;
                 }
                 HeroService.prototype.getHeroes = function () {
+                    this._loggerService.log("retrived heros!");
                     return Promise.resolve(mock_heroes_1.HEROES);
                 };
                 // See the "Take it slow" appendix
                 HeroService.prototype.getHeroesSlowly = function () {
+                    this._loggerService.warn("retrived heros!");
                     return new Promise(function (resolve) {
                         return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
                     } // 2 seconds
@@ -35,7 +41,7 @@ System.register(['./mock-heroes', 'angular2/core'], function(exports_1) {
                 };
                 HeroService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [logger_service_1.LoggerService])
                 ], HeroService);
                 return HeroService;
             })();
