@@ -20,7 +20,7 @@ import {DialogService}         from './dialog.service';
         component: CrisisCenterComponent,
         useAsDefault: true
     },
-    {
+    { 
         path: '/heroes/...', //That means this is an incomplete route (AKA a non-terminal route).
         name: 'Heroes',
         component: HeroComponent
