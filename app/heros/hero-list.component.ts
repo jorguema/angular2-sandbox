@@ -4,7 +4,7 @@ import {HeroService}   from './hero.service';
 import {Hero} from './hero';
 
 @Component({
-    templateUrl: 'app/template/hero-list.html'
+    templateUrl: 'app/heros/template/hero-list.html'
 })
 
 export class HeroListComponent implements OnInit {

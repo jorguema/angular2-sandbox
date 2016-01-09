@@ -4,7 +4,7 @@ import {Hero} from './hero';
 import {RouteParams, Router} from 'angular2/router';
 
 @Component({
-    templateUrl: 'app/template/hero-detail.html'
+    templateUrl: 'app/heros/template/hero-detail.html'
 })
 
 export class HeroDetailComponent implements OnInit {

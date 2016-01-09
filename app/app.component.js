@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './crisis-center/crisis-center.component', './hero-list.component', './hero-detail.component', './dialog.service', './hero.service'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './crisis-center/crisis-center.component', './heros/hero.component', './dialog.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', './crisis-center/crisis-cen
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, crisis_center_component_1, hero_list_component_1, hero_detail_component_1, dialog_service_1, hero_service_1;
+    var core_1, router_1, crisis_center_component_1, hero_component_1, dialog_service_1;
     var AppComponent;
     return {
         setters:[
@@ -21,17 +21,11 @@ System.register(['angular2/core', 'angular2/router', './crisis-center/crisis-cen
             function (crisis_center_component_1_1) {
                 crisis_center_component_1 = crisis_center_component_1_1;
             },
-            function (hero_list_component_1_1) {
-                hero_list_component_1 = hero_list_component_1_1;
-            },
-            function (hero_detail_component_1_1) {
-                hero_detail_component_1 = hero_detail_component_1_1;
+            function (hero_component_1_1) {
+                hero_component_1 = hero_component_1_1;
             },
             function (dialog_service_1_1) {
                 dialog_service_1 = dialog_service_1_1;
-            },
-            function (hero_service_1_1) {
-                hero_service_1 = hero_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -40,9 +34,9 @@ System.register(['angular2/core', 'angular2/router', './crisis-center/crisis-cen
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        templateUrl: 'app/template/structure.html',
+                        templateUrl: 'app/structure.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [dialog_service_1.DialogService, hero_service_1.HeroService]
+                        providers: [dialog_service_1.DialogService] //, HeroService]
                     }),
                     router_1.RouteConfig([
                         {
@@ -51,8 +45,12 @@ System.register(['angular2/core', 'angular2/router', './crisis-center/crisis-cen
                             component: crisis_center_component_1.CrisisCenterComponent,
                             useAsDefault: true
                         },
-                        { path: '/heroes', name: 'Heroes', component: hero_list_component_1.HeroListComponent },
-                        { path: '/hero/:id', name: 'HeroDetail', component: hero_detail_component_1.HeroDetailComponent }
+                        {
+                            path: '/heroes/...',
+                            name: 'Heroes',
+                            component: hero_component_1.HeroComponent
+                        },
+                        { path: '/disaster', name: 'Asteroid', redirectTo: ['CrisisCenter', 'CrisisDetail', { id: 3 }] }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

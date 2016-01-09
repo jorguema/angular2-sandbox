@@ -1,6 +1,6 @@
 import {Hero} from './hero';
 import {Injectable} from 'angular2/core';
-import {LoggerService} from './logger.service';
+import {LoggerService} from '../logger.service';
 import {HEROES} from './mock-heroes';
 
 @Injectable()
