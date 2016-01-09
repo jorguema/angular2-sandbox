@@ -4,7 +4,7 @@
         "**/.git": true,
         "dist": true,
         "**/*.js.map": true,
-        "app/*.js": true,
+        "app/**/*.js": true,
         "node_modules": true
     }
 }
