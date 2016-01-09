@@ -1,7 +1,7 @@
 import {Hero} from './hero';
-import {HEROES} from './mock-heroes';
 import {Injectable} from 'angular2/core';
 import {LoggerService} from './logger.service';
+import {HEROES} from './mock-heroes';
 
 @Injectable()
 export class HeroService {
@@ -11,11 +11,16 @@ export class HeroService {
         this._loggerService.log("retrived heros!");
         return Promise.resolve(HEROES);
     }
-    // See the "Take it slow" appendix
+
     getHeroesSlowly() {
         this._loggerService.warn("retrived heros!");
         return new Promise<Hero[]>(resolve =>
             setTimeout(() => resolve(HEROES), 2000) // 2 seconds
         );
+    }
+
+    getHero(id: number | string) {
+        return Promise.resolve(HEROES)
+            .then(heroes => heroes.filter(h => h.id === +id)[0]);
     }
 }

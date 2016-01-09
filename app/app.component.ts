@@ -1,27 +1,22 @@
 import {Component, OnInit} from 'angular2/core';
-import {Hero} from './hero';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+
+import {CrisisListComponent}   from './crisis-list.component';
+import {HeroListComponent}     from './hero-list.component';
 import {HeroDetailComponent} from './hero-detail.component';
 import {HeroService} from './hero.service';
 
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/template/hero-list.html',   
-    directives: [HeroDetailComponent],
+    templateUrl: 'app/template/structure.html',
+    directives: [ROUTER_DIRECTIVES],
     providers: [HeroService]
 })
 
-export class AppComponent implements OnInit {
-  public title = 'Tour of Heroes';
-  public heroes: Hero[];
-  public selectedHero: Hero;
-  constructor(private _heroService: HeroService) { }
-  
-  ngOnInit() {
-    this.getHeroes();
-  }
-  
-  getHeroes() {
-    this._heroService.getHeroes().then(heroes => this.heroes = heroes);
-  }  
-  onSelect(hero: Hero) { this.selectedHero = hero; }
-}
+@RouteConfig([
+    { path: '/crisis-center', name: 'CrisisCenter', component: CrisisListComponent },
+    { path: '/heroes', name: 'Heroes', component: HeroListComponent },
+    {path:'/hero/:id',      name: 'HeroDetail',   component: HeroDetailComponent}
+])
+
+export class AppComponent {}

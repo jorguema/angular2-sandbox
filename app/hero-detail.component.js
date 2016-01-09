@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', './hero.service', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,24 +8,39 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, hero_service_1, router_1;
     var HeroDetailComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (hero_service_1_1) {
+                hero_service_1 = hero_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             HeroDetailComponent = (function () {
-                function HeroDetailComponent() {
+                function HeroDetailComponent(_router, _routeParams, _service) {
+                    this._router = _router;
+                    this._routeParams = _routeParams;
+                    this._service = _service;
                 }
+                HeroDetailComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    var id = this._routeParams.get('id');
+                    this._service.getHero(id).then(function (hero) { return _this.hero = hero; });
+                };
+                HeroDetailComponent.prototype.gotoHeroes = function () {
+                    this._router.navigate(['Heroes']);
+                };
                 HeroDetailComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-hero-detail',
-                        templateUrl: 'app/template/hero-detail.html',
-                        inputs: ['hero']
+                        templateUrl: 'app/template/hero-detail.html'
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, hero_service_1.HeroService])
                 ], HeroDetailComponent);
                 return HeroDetailComponent;
             })();
