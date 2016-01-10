@@ -1,0 +1,42 @@
+<div>
+    <span class="badge">Simple click</span>
+    <br/>
+    <br/>
+    <button (click)="onClickMe()">Click me!</button>
+    {{clickMessage}}
+
+    <hr/>
+
+    <span class="badge">onkeyup use $event</span>
+    <br/>
+    <br/>
+    <input (keyup)="onKeyUp($event)">
+    <p>{{valuesKeyUp}}</p>
+
+    <hr/>
+
+    <span class="badge">Local variable template #box</span>
+    <br/>
+    <br/>
+    <input #box (keyup)="1">
+    <p>{{box.value}}</p>
+
+    <hr/>
+
+    <span class="badge">Local variable template #box2 only string</span>
+    <br/>
+    <br/>
+    <input #box2 (keyup)="onKeyFromLocalTemplate(box2.value)">
+    <p>{{valuesFromTemplate}}</p>      
+
+    <hr/>
+
+    <span class="badge">On enter / blur</span>
+    <br/>
+    <br/>
+    <input #box3
+     (keyup.enter)="values=box3.value"
+     (blur)="values=box3.value">
+    <p>{{values}}</p>
+
+</div>

@@ -3,6 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {CrisisCenterComponent} from './crisis-center/crisis-center.component';
 import {HeroComponent} from './heros/hero.component';
+import {UserInputComponent} from './user-input/user-input.component';
 
 import {DialogService}         from './dialog.service';
 
@@ -20,13 +21,19 @@ import {DialogService}         from './dialog.service';
         component: CrisisCenterComponent,
         useAsDefault: true
     },
-    { 
+    {
         path: '/heroes/...', //That means this is an incomplete route (AKA a non-terminal route).
         name: 'Heroes',
         component: HeroComponent
     },
+
+    {
+        path: '/user-input/...',
+        name: 'UserInput',
+        component: UserInputComponent
+    },
     
-    {path: '/disaster', name: 'Asteroid', redirectTo: ['CrisisCenter', 'CrisisDetail', {id:3}]}
+    {path: '/disaster', name: 'Asteroid', redirectTo: ['CrisisCenter', 'CrisisDetail', { id: 3 }] }
 ])
 
 export class AppComponent { }
