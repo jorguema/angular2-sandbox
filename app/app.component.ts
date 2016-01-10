@@ -4,6 +4,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {CrisisCenterComponent} from './crisis-center/crisis-center.component';
 import {HeroComponent} from './heros/hero.component';
 import {UserInputComponent} from './user-input/user-input.component';
+import { FormsComponent } from './forms/forms.component';
 
 import {DialogService}         from './dialog.service';
 
@@ -26,13 +27,16 @@ import {DialogService}         from './dialog.service';
         name: 'Heroes',
         component: HeroComponent
     },
-
     {
         path: '/user-input/...',
         name: 'UserInput',
         component: UserInputComponent
     },
-    
+    {
+        path: '/forms/...',
+        name: 'Forms',
+        component: FormsComponent
+    },    
     {path: '/disaster', name: 'Asteroid', redirectTo: ['CrisisCenter', 'CrisisDetail', { id: 3 }] }
 ])
 

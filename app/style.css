@@ -75,3 +75,11 @@ a.router-link-active {color: white; background-color: #52b9e9; }
   left: -1px;
   top: -1px;
 }
+
+.ng-valid[required] {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid {
+  border-left: 5px solid #a94442; /* red */
+}
