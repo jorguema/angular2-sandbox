@@ -1,0 +1,37 @@
+<p>The hero's birthday is {{ birthday }}</p>
+<p>The hero's birthday is {{ birthday | date }}</p>
+<p>The hero's birthday is {{ birthday | date:"MM/dd/yy" }} </p>
+<hr/>
+<p>The hero's birthday is {{ birthday | date:format }}</p>
+<button (click)="toggleFormat()">Toggle Format</button>
+<hr/>
+<h2>Power Booster</h2>
+<p>
+    Super power boost: {{2 | exponentialStrength: 10}}
+</p>
+
+<hr/>
+<h2>Power Boost Calculator</h2>
+<div>Normal power:
+    <input [(ngModel)]="power">
+</div>
+<div>Boost factor:
+    <input [(ngModel)]="factor">
+</div>
+<p>
+    Super Hero Power: {{power | exponentialStrength: factor}}
+</p>
+
+<hr/>
+<h2>Async pipe</h2>
+<div>
+    Message: {{delayedMessage | async}}
+</div>
+
+<hr/>
+<h4>Heroes from JSON File</h4>
+<div *ngFor="#hero of ('app/pipes/heroes.json' | fetch) ">
+    {{hero.name}}
+</div>
+<p>Heroes as JSON: {{'app/pipes/heroes.json' | fetch | json}}
+</p>
