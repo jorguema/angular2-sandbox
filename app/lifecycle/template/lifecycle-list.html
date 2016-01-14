@@ -1,0 +1,13 @@
+<div class="parent">
+    <h2>Peek-A-Boo</h2>
+
+    <button (click)="toggleChild()">
+        {{hasChild ? 'Destroy' : 'Create'}} PeekABooComponent
+    </button>
+    <button (click)="updateHero()" [hidden]="!hasChild">Update Hero</button>
+
+    <p *ngIf="hasChild">Now you see my hero, {{heroName}}</p>   
+
+    <h4>-- Lifecycle Hook Log --</h4>
+    <div *ngFor="#msg of hookLog">{{msg}}</div>
+</div>

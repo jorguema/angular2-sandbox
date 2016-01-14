@@ -6,6 +6,8 @@ import {HeroComponent} from './heros/hero.component';
 import {UserInputComponent} from './user-input/user-input.component';
 import { FormsComponent } from './forms/forms.component';
 import { PipesComponent } from './pipes/pipes.component';
+import { LifecycleComponent } from './lifecycle/lifecycle.component';
+import { DirectivesComponent } from './directives/directives.component';
 
 import {DialogService}         from './dialog.service';
 
@@ -42,6 +44,16 @@ import {DialogService}         from './dialog.service';
         path: '/pipes/...',
         name: 'Pipes',
         component: PipesComponent
+    },
+    {
+        path: '/lifecycle/...',
+        name: 'Lifecycle',
+        component: LifecycleComponent
+    },
+    {
+        path: '/directives',
+        name: 'Directives',
+        component: DirectivesComponent
     },
     {path: '/disaster', name: 'Asteroid', redirectTo: ['CrisisCenter', 'CrisisDetail', { id: 3 }] }
 ])

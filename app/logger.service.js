@@ -18,10 +18,25 @@ System.register(['angular2/core'], function(exports_1) {
         execute: function() {
             LoggerService = (function () {
                 function LoggerService() {
+                    this.logs = [];
                 }
                 LoggerService.prototype.log = function (msg) { console.log(msg); };
                 LoggerService.prototype.error = function (msg) { console.error(msg); };
                 LoggerService.prototype.warn = function (msg) { console.warn(msg); };
+                LoggerService.prototype.log2 = function (msg, noTick) {
+                    if (noTick === void 0) { noTick = false; }
+                    if (!noTick) {
+                        this.tick();
+                    }
+                    this.logs.push(msg);
+                    this.log(msg);
+                };
+                LoggerService.prototype.tick = function () {
+                    setTimeout(function () {
+                        // console.log('tick')
+                    }, 0);
+                };
+                LoggerService.prototype.clear = function () { };
                 LoggerService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
