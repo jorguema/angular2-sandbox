@@ -1,4 +1,4 @@
-<h2>Directives</h2>
+<h2>Attribute directives</h2>
 
 <h3>Attribute Directive</h3>
 <h4>Pick a highlight color</h4>
@@ -10,4 +10,95 @@
 <span [myHighlight]="color">Highlight me!</span>
 <p [myHighlight]="color" [defaultColor]="'violet'">
     Highlight me too (default color)!
+</p>
+
+<hr/>
+
+<h2>Structural directives</h2>
+<h4>ngSwitch</h4>
+<div *ngIf="hero">{{hero}}</div>
+<div *ngFor="#hero of heroes">{{hero}}</div>
+<div [ngSwitch]="status">
+  <template [ngSwitchWhen]="'in-mission'">In Mission</template>
+  <template [ngSwitchWhen]="'ready'">Ready</template>
+  <template ngSwitchDefault>Unknown</template>
+</div>
+<hr/>
+<h4>Visibility by class</h4>
+<div><!-- Visibility -->
+  <button (click)="isVisible = !isVisible">show | hide</button>
+  <heavy-loader [style.display]="isVisible ? 'inline' : 'none'" [logs]="logs"></heavy-loader>
+</div>
+<h4>Visibility by ngIF</h4>
+<div><!-- NgIf -->
+  <button (click)="condition = !condition">if | !if</button>
+  <heavy-loader *ngIf="condition" [logs]="logs"></heavy-loader>
+</div>
+<h4>heavy-loader log:</h4>
+<div *ngFor="#message of logs">{{message}}</div>
+
+<hr/>
+<h4>Unless directive (same ngIf but in directive and negated)</h4>
+<button
+  (click)="condition = !condition"
+  [style.background] = "condition ? 'orangered': 'lightgreen'"
+  >
+  Set 'condition' to {{condition ? 'False': 'True'}}
+</button>
+
+<p *ngIf="condition">
+  condition is true and ngIf is true.
+</p>
+<p *ngIf="!condition">
+  condition is false and ngIf is false.
+</p>
+<p *myUnless="condition">
+  condition is false and myUnless is true.
+</p>
+
+<p *myUnless="!condition">
+  condition is true and myUnless is false.
+</p>
+
+<hr/>
+<h4>Equivalence *ngIf and [ngIf]</h4>
+<!-- Examples (A) and (B) are the same -->
+<!-- (A) *ngIf paragraph -->
+<p *ngIf="condition">
+  Our heroes are true!
+</p>
+
+<!-- (B) [ngIf] with template -->
+<template [ngIf]="condition">
+  <p>
+    Our heroes are true!
+  </p>
+</template>
+
+<hr>
+
+<!-- Examples (A) and (B) are the same -->
+
+<!-- (A) *ngFor div -->
+<div *ngFor="#hero of heroes">{{ hero }}</div>
+
+<!-- (B) ngFor with template -->
+<template ngFor #hero [ngForOf]="heroes">
+  <div>{{ hero }}</div>
+</template>
+
+<hr/>
+<h4>< template > look at this</h4>
+
+<p>
+  Hip!
+</p>
+templatetag's default CSS display property is none. !!!
+<template>
+  <p>
+    Hip!
+  </p>
+</template>
+<p>
+  Hooray!
 </p>
